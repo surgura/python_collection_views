@@ -2,7 +2,9 @@
 
 set -e
 
-cd "$(dirname "$0")/../.."
+cd "$(dirname "$0")"
+INI=$(pwd)/mypy.ini
+cd "../.."
 
-mypy --package collection_views
-mypy --package tests
+mypy --config-file $INI --package collection_views
+mypy --config-file $INI --package tests
