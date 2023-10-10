@@ -4,7 +4,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
 name = "collection-views"
-version = "0.0.0"
+version = "0.0.1"
 description = "Mutable and immutable views over standard collections with proper type annotations."
 readme = "README.md"
 authors = ["Aart Stuurman <aartstuurman@hotmail.com>"]
