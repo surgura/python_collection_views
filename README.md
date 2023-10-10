@@ -1,12 +1,26 @@
 # Python collection views
-Mutable and immutable views over standard collections.
+Mutable and immutable views over standard collections with proper type annotations.
 
 ## Install
-To be written when the package is released.
+```
+pip install collection-views
+```
+
+## Sample
+```python
+from collection_views import ImmutableViewList
+
+mylist = ["Hello", "collection", "views"]
+myview = ImmutableViewList(mylist)
+
+print(myview[1]) # prints "collection"
+print(myview[1:]) # prints "['collection', 'views']"
+myview[0] = "Bye" # Does not support item assignment!
+```
 
 ## Python support
 New releases will support all actively maintained Python versions.
-At the time of writing, it is predicted that the next release will target python 3.8 through 3.12.
+The latest release targets python 3.8 through 3.12.
 
-## Scope
-The first MVP will focus purely on an immutable view over a list.
+## Features
+* `ImmutableViewList`, an immutable view over a list.
