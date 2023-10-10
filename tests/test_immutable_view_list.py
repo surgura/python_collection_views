@@ -2,12 +2,6 @@ import pytest
 from collection_views import ImmutableViewList
 
 
-def test_init() -> None:
-    lst = [1, 2, 3, 4]
-    view = ImmutableViewList(lst)
-    assert len(view) == len(lst)
-
-
 def test_index() -> None:
     lst = [1, 2, 3, 4]
     view = ImmutableViewList(lst)
@@ -33,6 +27,18 @@ def test_getitem() -> None:
     view = ImmutableViewList(lst)
     assert view[1] == lst[1]
     assert view[1:2] == lst[1:2]
+
+
+def test_len() -> None:
+    lst = [1, 2, 3, 4]
+    view = ImmutableViewList(lst)
+    assert len(view) == len(lst)
+
+
+def test_contains() -> None:
+    lst = [1, 2, 3]
+    view = ImmutableViewList(lst)
+    assert 2 in view
 
 
 def test_str_repr() -> None:
@@ -88,6 +94,9 @@ def test_lt() -> None:
     view1 = ImmutableViewList(lst1)
     view2 = ImmutableViewList(lst2)
     assert (view1 < view2) == (lst1 < lst2)
+    assert (view1 < lst2) == (lst1 < lst2)
+    assert (view2 < view1) == (lst2 < lst1)
+    assert (view2 < lst1) == (lst2 < lst1)
 
 
 def test_le() -> None:
@@ -96,9 +105,10 @@ def test_le() -> None:
     view1 = ImmutableViewList(lst1)
     view2 = ImmutableViewList(lst2)
     assert (view1 <= view2) == (lst1 <= lst2)
+    assert (view1 <= lst2) == (lst1 <= lst2)
+    assert (view2 <= view1) == (lst2 <= lst1)
+    assert (view2 <= lst1) == (lst2 <= lst1)
 
-
-# ... add more tests as necessary ...
 
 if __name__ == "__main__":
     pytest.main()
